@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartVocab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f4f8; font-family: 'Arial', sans-serif; }
+        .navbar { background-color: #007bff; }
+        .navbar-brand, .nav-link { color: white !important; transition: color 0.3s; }
+        .nav-link:hover { color: #e0e0e0 !important; }
+        .container { max-width: 900px; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-top: 30px; }
+        .btn-primary { background-color: #007bff; border: none; transition: transform 0.2s; }
+        .btn-primary:hover { transform: scale(1.05); }
+        .btn-secondary { background-color: #6c757d; border: none; }
+        .alert { border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" data-aos="fade-down">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">SmartVocab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="{{ url_for('word_quiz') }}">Word Quiz</a>
+                    <a class="nav-link" href="{{ url_for('sentence_quiz') }}">Sentence Quiz</a>
+                    <a class="nav-link" href="{{ url_for('manage_vocab') }}">Manage Vocab</a>
+                    <a class="nav-link" href="{{ url_for('progress') }}">Progress</a>
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} mt-3" data-aos="fade-up">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

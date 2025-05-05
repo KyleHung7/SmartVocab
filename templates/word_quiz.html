@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title">Word Quiz</h2>
+        <p class="lead">Translate: <strong>{{ question }}</strong></p>
+        <form method="POST">
+            <input type="hidden" name="vocab_id" value="{{ word.id }}">
+            <div class="mb-3" data-aos="fade-right">
+                <input type="text" class="form-control" name="answer" placeholder="Enter your answer" required>
+            </div>
+            <button type="submit" class="btn btn-primary" data-aos="zoom-in">Submit</button>
+        </form>
+        <a href="{{ url_for('word_quiz', direction='eng_to_chi' if direction == 'chi_to_eng' else 'chi_to_eng') }}" 
+           class="btn btn-secondary mt-3" data-aos="zoom-in" data-aos-delay="100">
+           Switch to {{ 'English to Chinese' if direction == 'chi_to_eng' else 'Chinese to English' }}
+        </a>
+    </div>
+</div>
+{% endblock %}

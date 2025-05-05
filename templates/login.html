@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title text-center">Login to SmartVocab</h2>
+        <form method="POST">
+            <div class="mb-3" data-aos="fade-right">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" data-aos="zoom-in">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

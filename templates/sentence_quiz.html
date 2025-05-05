@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title">Sentence Completion Quiz</h2>
+        <p class="lead">Fill in the blank: {{ sentence }}</p>
+        <form method="POST">
+            <input type="hidden" name="vocab_id" value="{{ word.id }}">
+            <div class="mb-3" data-aos="fade-right">
+                <input type="text" class="form-control" name="answer" placeholder="Enter the word" required>
+            </div>
+            <button type="submit" class="btn btn-primary" data-aos="zoom-in">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

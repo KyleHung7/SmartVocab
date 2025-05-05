@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title">Edit Vocabulary</h2>
+        <form method="POST" action="{{ url_for('edit_vocab', vocab_id=vocab.id) }}">
+            <div class="mb-3" data-aos="fade-right">
+                <label for="prefix" class="form-label">Prefix</label>
+                <input type="text" class="form-control" id="prefix" name="prefix" value="{{ vocab.prefix }}" placeholder="e.g., pre-, un-">
+            </div>
+            <div class="mb-3" data-aos="fade-right" data-aos-delay="100">
+                <label for="suffix" class="form-label">Suffix</label>
+                <input type="text" class="form-control" id="suffix" name="suffix" value="{{ vocab.suffix }}" placeholder="e.g., -tion, -able">
+            </div>
+            <div class="mb-3" data-aos="fade-right" data-aos-delay="200">
+                <label for="english" class="form-label">English</label>
+                <input type="text" class="form-control" id="english" name="english" value="{{ vocab.english }}" placeholder="e.g., predict" required>
+            </div>
+            <div class="mb-3" data-aos="fade-right" data-aos-delay="300">
+                <label for="chinese" class="form-label">Chinese</label>
+                <input type="text" class="form-control" id="chinese" name="chinese" value="{{ CURLY_BRACE_START vocab.chinese CURLY_BRACE_END }}" placeholder="e.g., 預測" required>
+            </div>
+            <button type="submit" class="btn btn-primary" data-aos="zoom-in">Update Vocabulary</button>
+            <a href="{{ url_for('manage_vocab') }}" class="btn btn-secondary" data-aos="zoom-in" data-aos-delay="100">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

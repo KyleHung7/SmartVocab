@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-4">Welcome to SmartVocab</h2>
+        <p class="text-center">Choose your learning mode to boost your vocabulary!</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{{ url_for('word_quiz', direction='eng_to_chi') }}" class="btn btn-primary m-2" data-aos="zoom-in">English to Chinese Quiz</a>
+            <a href="{{ url_for('word_quiz', direction='chi_to_eng') }}" class="btn btn-primary m-2" data-aos="zoom-in" data-aos-delay="100">Chinese to English Quiz</a>
+            <a href="{{ url_for('sentence_quiz') }}" class="btn btn-primary m-2" data-aos="zoom-in" data-aos-delay="200">Sentence Completion Quiz</a>
+            <a href="{{ url_for('manage_vocab') }}" class="btn btn-secondary m-2" data-aos="zoom-in" data-aos-delay="300">Manage Vocabulary</a>
+            <a href="{{ url_for('progress') }}" class="btn btn-secondary m-2" data-aos="zoom-in" data-aos-delay="400">View Progress</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

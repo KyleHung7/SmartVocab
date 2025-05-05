@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" data-aos="fade-up">
+    <div class="card-body">
+        <h2 class="card-title">Learning Progress</h2>
+        <table class="table table-hover" data-aos="fade-up" data-aos-delay="100">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Mode</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in progress_records %}
+                <tr>
+                    <td>{{ record.vocabulary.english }}</td>
+                    <td>{{ record.mode }}</td>
+                    <td>
+                        <span class="badge {{ 'bg-success' if record.correct else 'bg-danger' }}">
+                            {{ 'Correct' if record.correct else 'Incorrect' }}
+                        </span>
+                    </td>
+                    <td>{{ record.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
